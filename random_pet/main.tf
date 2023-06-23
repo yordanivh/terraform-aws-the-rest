@@ -26,6 +26,18 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"] # Canonical
 }
+resource "random_pet" "server" {
+  keepers = {
+    ami_id = var.ami_id
+  }
+}
+
+resource "aws_instance" "server" {
+  tags = {
+    Name = "web-server-${random_pet.server.id}"
+  }
+}
+
 
 
 
