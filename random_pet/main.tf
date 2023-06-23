@@ -28,7 +28,7 @@ data "aws_ami" "ubuntu" {
 }
 resource "random_pet" "server" {
   keepers = {
-    ami_id = var.ami_id
+    ami_id = data.aws_ami.ubuntu.id
   }
 }
 
@@ -50,14 +50,4 @@ resource "aws_instance" "server" {
 
 
 
-resource "random_pet" "server" {
-  keepers = {
-    ami_id = ata.aws_ami.ubuntu.id
-  }
-}
 
-resource "aws_instance" "server" {
-  tags = {
-    Name = "web-server-${random_pet.server.id}"
-  }
-}
