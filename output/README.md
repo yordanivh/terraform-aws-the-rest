@@ -67,12 +67,12 @@ terraform plan and terraform apply
 
 
 
-terraform destroy
-
-About this demonstration the most important session is the during terraform apply, and generated output values after the session. We can see the ami_id and instance_id.
 
 
+About this demonstration the most important session is the during terraform apply, and generated output values after the session. We can see the ami_id and instance_id, wicth were declared as an output information in the outputs.tf file. This outputs can be used for other infrastructures, so this is some kind of reusable information about a given infrastructure. 
 
+
+terraform destroy - with command all the resources that have been deployed in AWS are deleted. And when we want to reproduce the same scenario we will have new IDs of the ami_image and instance_id. This make this configuration reusable. 
 
 
 
