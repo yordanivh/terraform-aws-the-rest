@@ -1,4 +1,4 @@
-VARIABLES
+MODULES
 
 This repo contains files for testing the configuration deployement via using reusable configuration module. 
 
