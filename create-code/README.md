@@ -96,39 +96,3 @@ $ terraform apply
 | ami_id | The ID of ami after creation
 | instance ID  | ID of the resource named web
 
-
-
-    
-
-
-
-
-
-
-
-<img width="320" alt="Screenshot 2023-06-26 at 10 09 13" src="https://github.com/dbeleva-af/the-rest/assets/105104959/db1f35d9-a71a-4aef-8197-dde9d32a5c3e">
-
-
-
-
-
-
-
-
-On the screenshot we can see that in AWS there is one instance running - the ec2 instance called from the modules/ec2 path.
-terraform destroy - with this command the whole infrastructure is removed from the cloud.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
