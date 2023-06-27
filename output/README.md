@@ -16,7 +16,10 @@ provider "registry.terraform.io/hashicorp/aws"
 
 ### DESCRIPTION
 
-The outputs.tf file is a part of the structure in configurational folder that contains all necesary .tf files for defining a given infrastructire in AWS cloud. After every apply it gives end values for given resource parameters. The information from the outputs can be used for other configurations, and that makes the information reusable. The information from the outputs can be used as a data source for another Terraform workspace. Outputs are also how you expose data from a child module to a root module. 
+The outputs.tf file is a part of the structure in configurational folder that contains all necesary .tf files for defining a given infrastructire in AWS 
+cloud. After every apply it gives end values for given resource parameters. The information from the outputs can be used for other configurations, and that makes the 
+information reusable. The information from the outputs can be used as a data source for another Terraform workspace. Outputs are also how you expose data from a child 
+module to a root module. 
 
 ## Configuration
 
