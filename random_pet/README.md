@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - git
-- terraform (>=0.12)
+- terraform (>=1.5)
 - AWS account
 - AWS credentials configured to work with terraform
 - Terraform installed localy. 
