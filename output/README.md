@@ -1,41 +1,83 @@
-OUTPUT
+# Terraform configuration for testing the behavior of terraform outputs.tf file in a given configuration module.
 
-This repo contains files for testing the behavior of terraform outputs.tf file in a given configuration module.
+## Prerequisites
 
-SOURCE - Terraform Registry.
+- git
+- terraform (>=1.5)
+- AWS account
+- AWS credentials configured to work with terraform
+- Terraform installed localy. 
 
-DESCRIPTION
-
-The outputs.tf file is a part of the structure in configurational folder that contains all necesary .tf files for defining a given infrastructire in AWS cloud. After every apply it gives
-end values for given resource parameters. The information from the outputs can be used for other configurations, and that makes the information reusable. The information from the outputs
-can be used as a data source for another Terraform workspace. Outputs are also how you expose data from a child module to a root module. 
-
-REQUIREMENTS:
-
-Terraform installed localy.
-Acount in AWS with credentials configured to work with Terraform, witch is installed localy. 
-
-VERSIONS: 
-provider "registry.terraform.io/hashicorp/aws" {
+## VERSIONS: 
+```
+provider "registry.terraform.io/hashicorp/aws"
   version     = "5.4.0"
-  constraints = "5.4.0"
+```
 
-FILES IN THE REPO:
+### DESCRIPTION
 
-main.tf - his file contains the configuration for the provider.
-variables.tf - this file contains the variables for the main.tf file. This file is a way to avoid the hard-coded values in the main.tf file. And those values are refenced in the main file.
-outputs.tf - This file is the BIG hero in this repo. It contains the values in this file are the final information about given parameters of the deployed resources. In this case we want to reproduse the output "ami_id" and output "instance_id".
-README - This is the current file.
-.terraform.lock.hcl - This file is created during the init session.
+The outputs.tf file is a part of the structure in configurational folder that contains all necesary .tf files for defining a given infrastructire in AWS cloud. After every apply it gives end values for given resource parameters. The information from the outputs can be used for other configurations, and that makes the information reusable. The information from the outputs can be used as a data source for another Terraform workspace. Outputs are also how you expose data from a child module to a root module. 
 
-TESTING
-terraform init
+## Configuration
 
+- Create `main.tf` file
+```
+data "aws_ami" "ubuntu" {}
+resource "aws_instance" "web" {}
+resource "aws_vpc" "net-vpc" {}
+resource "aws_subnet" "vpc-subnet" {}
+```
+  
+- Create `variables.tf` file
+```
+variable "vpc-cidr" {}
+variable "subnet-cidr" {}
+```
 
+- Create `outputs.tf` file
+```
+output "ami_id" {
+  description = "The AMI ID after apply"
+  value       = data.aws_ami.ubuntu.id
+}
 
+output "instance_id" {
+  description = "The id after apply"
+  value       = resource.aws_instance.web.id
+}
+```
 
+### Inputs
 
-<img width="561" alt="Screenshot 2023-06-23 at 17 21 38" src="https://github.com/dbeleva-af/null_provider/assets/105104959/6254affc-a0fd-456f-9016-7af56d5aefe7">
+| Name  |	Description |	Type |  Default |	Required
+| ----- | ----------- | ---- |  ------- | --------
+| access_key | Requester AWS access key | string | - | yes
+| secret_key | Requester AWS secret key | string | - | yes
+| region | Requester AWS region | string | "us-east-1" | no
+| ami_id | AMI ID for server | string | yes
+| VPC cidr_block | CIDR for the vpc | string | 10.0.0.0/16 | yes
+| subnet cidr_block | CIDR for the subnet | string | 10.0.1.0/24 | yes 
+
+### Initialize terraform and plan/apply
+
+```
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
+- `Terraform apply` will:
+  - create AMI 
+  - create ec2 instance with output values
+    
+#### Outputs
+
+| Name  |	Description 
+| ----- | ----------- 
+| ami_id | The ID of ami after creation
+| instance ID  | ID of the resource named web
+| vpc_id | ID for the VPC after creation
+| subnet_id | ID for the subnet after creation
 
 
 
