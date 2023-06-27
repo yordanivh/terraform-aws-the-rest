@@ -73,7 +73,7 @@ $ terraform apply
 | ----- | ----------- 
 | ami_id | The ID of ami after creation
 | server ID  | ID of the resource named server
-
+| server name | random name for the ec2 instance
 
 
 
