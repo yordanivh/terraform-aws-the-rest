@@ -20,28 +20,28 @@ provider "registry.terraform.io/hashicorp/aws"
   ### PARRENT (CALLING) MODULE: 
     
     - Create `main.tf` file
-    ```
+    
     data "aws_ami" "ubuntu-1" {}
     resource "aws_instance" "web-1" {}
     resource "aws_instance" "web-2" {}
-    ```
+    
     
     - Create `providers.tf` file
-    ```
+    
     provider "aws" {
       alias = "ohio"
       region = "us-east-2"
     }
-    ```
+    
 
     - Create `variables.tf` file
-    ```
+    
     variable "instance_type" {}
     variable "region" {}
-    ```
+    
 
     - Create `outputs.tf` file
-    ```
+    
     output "ami_id-1" {
       description = "The AMI ID after apply"
       value       = data.aws_ami.ubuntu-1.id
