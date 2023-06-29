@@ -26,40 +26,38 @@ is created one module. Unlike the previous demo (1resource-2regions) where for a
   ### PARRENT (CALLING) MODULE: 
     
     - Create `main.tf` file
-    ```
+    
     provider "aws" {
       region = var.region
     }
 
     provider "aws" {
       alias  = "east"
-      region = "us-east-2"
+      region = "us-west-2"
     }
     module "ec2-instance" {}
     module "ec2-instance2" {}
-    ```
     
     - Create `variables.tf` file
-    ```
     variable "region" {}
     variable "instance_type" {}
-    ```
+   
 
-    ### CHILD MODULE 1:
+    ### CHILD MODULE:
 
     - Create `main.tf` file
-    ```
+    
     data "aws_ami" "ubuntu" {}
     resource "aws_instance" "web" {}
-    ```
+    
     
     - Create `variables.tf` file
-    ```
+    
     variable "instance_type" {}
-    ```
+    
     
     - Create `outputs.tf` file
-    ```
+    
     output "ami_id" {
       description = "The AMI ID after apply"
       value       = data.aws_ami.ubuntu.id
@@ -69,33 +67,7 @@ is created one module. Unlike the previous demo (1resource-2regions) where for a
       description = "The id after apply"
       value       = resource.aws_instance.web.id
     }
-    ```
-
-    ### CHILD MODULE 2:
-
-    - Create `main.tf` file
-    ```
-    data "aws_ami" "ubuntu" {}
-    resource "aws_instance" "web" {}
-    ```
     
-    - Create `variables.tf` file
-    ```
-    variable "instance_type" {}
-    ```
-    
-    - Create `outputs.tf` file
-    ```
-    output "ami_id" {
-      description = "The AMI ID after apply"
-      value       = data.aws_ami.ubuntu.id
-    }
-
-    output "instance_id" {
-      description = "The id after apply"
-      value       = resource.aws_instance.web.id
-    }
-    ```
 
 ## Inputs
 
@@ -118,7 +90,7 @@ $ terraform apply
 ```
 
 - `Terraform apply` will:
-  - create equal resources using one 2 modules for 2 different regions
+  - create equal resources using one 1 module for 2 different regions
   - create 2 equal AMIs for the instances in those regions 
   
     
