@@ -1,6 +1,6 @@
 variable "region" {
   description = "aws region for the first ec2 module"
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 variable "instance_type" {
