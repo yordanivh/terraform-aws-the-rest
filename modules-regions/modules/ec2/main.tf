@@ -1,18 +1,3 @@
-/*
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "5.4.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = var.region
-}
-*/
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 
