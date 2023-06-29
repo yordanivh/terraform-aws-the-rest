@@ -3,21 +3,21 @@
 ## Description
     This directory contains folders with configurational files for deploying resources in AWS cloud. I will describe every one of theme.
 
-  - 1RESOURCE-2REGIONS - This directory contains configurational files for deploying 1 resource via modul in multiple regions. It has two levels - parrent and child modules.
+  - 1resource-2regions - This directory contains configurational files for deploying 1 resource via modul in multiple regions. It has two levels - parrent and child modules.
 
-  - CREATE-CODE - This directory shows how to use a diven configuration as a separate module. It is two leveled too.
+  - create-code - This directory shows how to use a diven configuration as a separate module. It is two leveled too.
 
-  - FOR-EACH - In this folder you can find files with configuration with the usage of the for_each meta-argument for creating multiple resources from one resource block.
+  - for-each - In this folder you can find files with configuration with the usage of the for_each meta-argument for creating multiple resources from one resource block.
 
-  - MODULES-REGIONS - With this configuration you can reuse one module and create new one and deploy the configuration in multiple regions. 
+  - modules-regions - With this configuration you can reuse one module and create new one and deploy the configuration in multiple regions. 
 
-  - OUTPUT - In this directory you can find configuration that is oriented around the efect of the outputs.tf file. After apply the output values are visible.
+  - output - In this directory you can find configuration that is oriented around the efect of the outputs.tf file. After apply the output values are visible.
 
-  - PANDOM_PET - example on how to use the terraform random_pet resource.
+  - random_pet - example on how to use the terraform random_pet resource.
 
-  - USE-COUNT - This directory contains files for deploying equal resources from one resource block. But unlike the for_each here we have specific number of resources.
+  - count - This directory contains files for deploying equal resources from one resource block. But unlike the for_each here we have specific number of resources.
 
-  - VARIABLES - In this folder the accent is on the efekt of using variable values in a separate file.
+  - variables - In this folder the accent is on the efekt of using variable values in a separate file.
 
   - .gitignore - in this file are listed all the file types that shouldn't be commited in privet repository
 
