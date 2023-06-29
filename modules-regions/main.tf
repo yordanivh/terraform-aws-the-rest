@@ -13,7 +13,7 @@ provider "aws" {
 
 provider "aws" {
   alias  = "east"
-  region = "us-east-2"
+  region = "us-west-2"
 }
 
 module "ec2-instance" {
@@ -22,9 +22,10 @@ module "ec2-instance" {
 }
 
 module "ec2-instance2" {
-  source = "./modules/ec2-2"
+  source = "./modules/ec2"
   instance_type = var.instance_type
   providers = {
     aws = aws.east
   }
 }
+
